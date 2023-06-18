@@ -45,4 +45,7 @@ if (isset($_POST['enviar'])) {
         echo "Message não enviada. Erro: {$mail->ErrorInfo}";
     }
 }
+else {
+    echo 'Erro ao enviar email';
+}
 
