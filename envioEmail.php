@@ -11,6 +11,7 @@ if (isset($_POST['enviar'])) {
 
     //Variavel de ambiente com a senha do email
     $senhaEmail = getenv('senhaEmail');
+    $hostEmail = getenv('hostEmail');
 
     try {
         //Server settings
@@ -18,16 +19,16 @@ if (isset($_POST['enviar'])) {
         $mail->isSMTP();
         $mail->Host       = 'smtp.gmail.com';
         $mail->SMTPAuth   = true;
-        $mail->Username   = 'joao.souza@injunior.com.br';
+        $mail->Username   = $hostEmail;
         $mail->Password   = $senhaEmail;
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mail->Port       = 465;                                    
         //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
         //Recipients
-        $mail->setFrom('joao.souza@injunior.com.br', 'João');
-        $mail->addAddress('joao.souza@injunior.com.br', 'Site');
-        $mail->addReplyTo('joao.souza@injunior.com.br', 'Information');
+        $mail->setFrom($hostEmail, 'João');
+        $mail->addAddress($hostEmail, 'Site');
+        $mail->addReplyTo($hostEmail, 'Information');
 
         //Attachments
         // $mail->addAttachment('/var/tmp/file.tar.gz');
