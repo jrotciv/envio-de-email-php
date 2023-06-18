@@ -7,17 +7,21 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="envioEmail.php" method="post">
+    <form action="envioEmail.php" method="post" enctype="multipart/form-data">
         <div>
-            <input type="text" name="nome" placeholder="Nome">
+            <input type="text" name="nome" placeholder="Nome" required>
         </div>
 
         <div>
-            <input type="email" name="email" placeholder="E-mail">
+            <input type="email" name="email" placeholder="E-mail" required>
         </div>
 
         <div>
-            <textarea name="mensagem"></textarea>
+            <textarea name="mensagem" required></textarea>
+        </div>
+
+        <div>
+            <input type="file" name="arquivo" accept="application/pdf" required>   
         </div>
 
         <input type="submit" name="enviar">

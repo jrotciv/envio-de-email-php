@@ -31,8 +31,12 @@ if (isset($_POST['enviar'])) {
         $mail->addReplyTo($hostEmail, 'Information');
 
         //Attachments
-        // $mail->addAttachment('/var/tmp/file.tar.gz');
-        // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');
+        if ($_FILES['arquivo']['error'] === UPLOAD_ERR_OK) {
+            $pathArquivo = $_FILES['arquivo']['tmp_name'];
+            $nomeArquivo = $_FILES['arquivo']['name'];
+
+            $mail->addAttachment($pathArquivo , $nomeArquivo);
+        }
 
         //Content
         $mail->isHTML(true);
