@@ -19,16 +19,16 @@ if (isset($_POST['enviar'])) {
         $mail->isSMTP();
         $mail->Host       = 'smtp.gmail.com';
         $mail->SMTPAuth   = true;
-        $mail->Username   = 'joao.souza.ifrjcsg.20171@gmail.com';
-        $mail->Password   = 'a*4Zhwd$V235';
+        $mail->Username   = $hostEmail;
+        $mail->Password   = $senhaEmail;
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mail->Port       = 465;                                    
         //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
         //Recipients
-        $mail->setFrom('joao.souza.ifrjcsg.20171@gmail.com', 'João');
-        $mail->addAddress('joao.souza.ifrjcsg.20171@gmail.com', 'Site');
-        $mail->addReplyTo('joao.souza.ifrjcsg.20171@gmail.com', 'Information');
+        $mail->setFrom($hostEmail, 'João');
+        $mail->addAddress($hostEmail, 'Site');
+        $mail->addReplyTo($hostEmail, 'Information');
 
         //Attachments
         // $mail->addAttachment('/var/tmp/file.tar.gz');
