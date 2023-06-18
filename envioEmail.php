@@ -5,6 +5,7 @@ use PHPMailer\PHPMailer\Exception;
 
 //Load Composer's autoloader
 require 'vendor/autoload.php';
+require 'corpoEmail.php';
 
 if (isset($_POST['enviar'])) {
     $mail = new PHPMailer(true);
@@ -39,9 +40,13 @@ if (isset($_POST['enviar'])) {
         }
 
         //Content
+        $nomeForm = $_POST['nome'];
+        $emailForm = $_POST['email'];
+        $mensagemForm = $_POST['mensagem'];
+
         $mail->isHTML(true);
         $mail->Subject = 'Assunto teste';
-        $mail->Body    = 'Corpo da mensagem';
+        $mail->msgHTML(corpoEmail($nomeForm, $emailForm, $mensagemForm));
         $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
         $mail->send();
