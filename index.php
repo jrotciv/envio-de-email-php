@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="post" method="post">
+    <form action="envioEmail.php" method="post">
         <div>
             <input type="text" name="nome" placeholder="Nome">
         </div>
