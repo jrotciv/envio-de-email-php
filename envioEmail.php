@@ -14,6 +14,11 @@ if (isset($_POST['enviar'])) {
     $senhaEmail = getenv('senhaEmail');
     $hostEmail = getenv('hostEmail');
 
+    //Informações do formulario
+    $nomeForm = $_POST['nome'];
+    $emailForm = $_POST['email'];
+    $mensagemForm = $_POST['mensagem'];
+
     try {
         //Server settings
         $mail->SMTPDebug = SMTP::DEBUG_SERVER;
@@ -25,11 +30,12 @@ if (isset($_POST['enviar'])) {
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mail->Port       = 465;                                    
         //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+        $mail->CharSet = 'UTF-8';
 
         //Recipients
-        $mail->setFrom($hostEmail, 'João');
+        $mail->setFrom($hostEmail, 'Formulário');
         $mail->addAddress($hostEmail, 'Site');
-        $mail->addReplyTo($hostEmail, 'Information');
+        $mail->addReplyTo($emailForm, $nomeForm);
 
         //Attachments
         if ($_FILES['arquivo']['error'] === UPLOAD_ERR_OK) {
@@ -40,10 +46,6 @@ if (isset($_POST['enviar'])) {
         }
 
         //Content
-        $nomeForm = $_POST['nome'];
-        $emailForm = $_POST['email'];
-        $mensagemForm = $_POST['mensagem'];
-
         $mail->isHTML(true);
         $mail->Subject = 'Assunto teste';
         $mail->msgHTML(corpoEmail($nomeForm, $emailForm, $mensagemForm));

@@ -38,7 +38,7 @@ function corpoEmail($nome, $email, $mensagem) {
             <h1>Informações do formulário<h1>
             <h2>Nome do cliente: ' . $nome . '</h2>
             <h2>Email: ' . $email . '</h2>
-            <p>' . $mensagem . '</p>
+            <p>Mensagem: ' . $mensagem . '</p>
         </div>
     </body>
     </html>';
