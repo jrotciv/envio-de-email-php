@@ -6,13 +6,14 @@ use PHPMailer\PHPMailer\Exception;
 //Load Composer's autoloader
 require 'vendor/autoload.php';
 require 'corpoEmail.php';
+require_once 'credenciaisEmail.php';
 
 if (isset($_POST['enviar'])) {
     $mail = new PHPMailer(true);
 
-    //Variavel de ambiente com a senha do email
-    $senhaEmail = getenv('senhaEmail');
-    $hostEmail = getenv('hostEmail');
+    // //Variavel de ambiente com a senha do email
+    // $senhaEmail = getenv('senhaEmail');
+    // $hostEmail = getenv('hostEmail');
 
     //Informações do formulario
     $nomeForm = $_POST['nome'];
@@ -54,7 +55,7 @@ if (isset($_POST['enviar'])) {
         $mail->send();
         echo 'Mensagem enviada';
     } catch (Exception $e) {
-        echo "Message não enviada. Erro: {$mail->ErrorInfo}";
+        echo $hostEmail;
     }
 }
 else {
