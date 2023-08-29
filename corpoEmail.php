@@ -35,6 +35,7 @@ function corpoEmail($nome, $email, $mensagem) {
     </head>
     <body>
         <div class="container">
+            <img src="cid:logo" alt="Abacaxi" width="100" height="100">
             <h1>Informações do formulário<h1>
             <h2>Nome do cliente: ' . $nome . '</h2>
             <h2>Email: ' . $email . '</h2>

@@ -49,8 +49,9 @@ if (isset($_POST['enviar'])) {
         //Content
         $mail->isHTML(true);
         $mail->Subject = 'Assunto teste';
-        $mail->msgHTML(corpoEmail($nomeForm, $emailForm, $mensagemForm));
+        $mail->Body = corpoEmail($nomeForm, $emailForm, $mensagemForm);
         $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+        $mail->addEmbeddedImage('abacaxi.jpg', 'logo');
 
         $mail->send();
         echo 'Mensagem enviada';
