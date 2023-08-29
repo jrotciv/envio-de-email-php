@@ -2,6 +2,7 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
+use chillerlan\QRCode\QRCode;
 
 //Load Composer's autoloader
 require 'vendor/autoload.php';
@@ -51,12 +52,22 @@ if (isset($_POST['enviar'])) {
         $mail->Subject = 'Assunto teste';
         $mail->Body = corpoEmail($nomeForm, $emailForm, $mensagemForm);
         $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-        $mail->addEmbeddedImage('abacaxi.jpg', 'logo');
+        $mail->addEmbeddedImage('img/abacaxi.jpg', 'logo');
+
+        //Gerar QRCode, fazer upload e adicionar ao email
+        $qrcode = (new QRCode())->render('https://redevidaanimal.com.br/');
+
+        $qr_image = str_replace('data:image/png;base64,', '', $qrcode);
+        $path_upload = 'img/' . uniqid() . '.png';
+
+        file_put_contents($path_upload, base64_decode($qr_image));
+
+        $mail->addEmbeddedImage($path_upload, 'qrcode');
 
         $mail->send();
         echo 'Mensagem enviada';
     } catch (Exception $e) {
-        echo $hostEmail;
+        echo $e->getMessage();
     }
 }
 else {

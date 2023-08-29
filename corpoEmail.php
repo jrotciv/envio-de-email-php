@@ -40,6 +40,7 @@ function corpoEmail($nome, $email, $mensagem) {
             <h2>Nome do cliente: ' . $nome . '</h2>
             <h2>Email: ' . $email . '</h2>
             <p>Mensagem: ' . $mensagem . '</p>
+            <img src="cid:qrcode" alt="QRcode" width="100" height="100">
         </div>
     </body>
     </html>';

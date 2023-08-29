@@ -1,2 +1,3 @@
 credenciaisEmail.php
-abacaxi.jpg
+img/*
+!img/.gitkeep
