@@ -52,7 +52,7 @@ if (isset($_POST['enviar'])) {
         $mail->Subject = 'Assunto teste';
         $mail->Body = corpoEmail($nomeForm, $emailForm, $mensagemForm);
         $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-        $mail->addEmbeddedImage('img/abacaxi.jpg', 'logo');
+        $mail->addEmbeddedImage('img/logo.jpg', 'logo');
 
         //Gerar QRCode, fazer upload e adicionar ao email
         $qrcode = (new QRCode())->render('https://redevidaanimal.com.br/');
